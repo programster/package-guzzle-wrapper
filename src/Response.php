@@ -13,6 +13,7 @@ namespace Programster\GuzzleWrapper;
 final class Response
 {
     private $headers;
+    private $statusCode;
     private $body;
     private $guzzleResponse;
     
@@ -21,15 +22,17 @@ final class Response
     {
         $this->body = $response->getBody()->getContents();
         $this->guzzleResponse = $response;
+        $this->statusCode = $response->getStatusCode();
         
         // unfortunately guzzle does some funky stuff with headers, that we simplify to name/value
         // pairs
         $this->headers = array();
         $this->headers = $response->getHeaders();
+        $response->getStatusCode();
         
         if (false) {
             $headersArray = $response->getHeaders();
-
+            
             foreach ($headersArray as $name => $subArray)
             {
                 if (is_array($subArray) && count($subArray) == 1) {
@@ -74,5 +77,16 @@ final class Response
     public function getGuzzleResponseObject() : \Guzzle\Http\Message\Response
     {
         return $this->guzzleResponse;
+    }
+    
+    
+    /**
+     * Get the response code of the response. E.g. 200 for okay, 400 for user error, 500 for server 
+     * error
+     * @return int - the status code.
+     */
+    public function getStatusCode() : int
+    {
+        return $this->statusCode;
     }
 }
