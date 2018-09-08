@@ -1,0 +1,28 @@
+{
+    "name": "programster/guzzle-wrapper",
+    "type": "library",
+    "description": "A library to make it easier to use Guzzle for sending HTTP requests.",
+    "keywords": ["guzzle","library"],
+    "homepage": "http://blog.programster.org",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Stuart Page",
+            "email": "sdpagent@gmail.com",
+            "homepage": "http://blog.programster.org/",
+            "role": "Master of the universe."
+        }
+    ],
+    "require": {
+        "php": ">=7.0.0",
+        "guzzle/guzzle": "^3.9"
+    },
+    "require-dev": {
+        "irap/autoloader": "1.0.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Programster\\GuzzleWrapper\\": "src/"
+        }
+    }
+}
