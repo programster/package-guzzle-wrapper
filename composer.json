@@ -15,10 +15,11 @@
     ],
     "require": {
         "php": ">=7.0.0",
-        "guzzle/guzzle": "^3.9"
+        "guzzlehttp/guzzle": "^6.3"
     },
     "require-dev": {
-        "irap/autoloader": "1.0.*"
+        "irap/autoloader": "1.0.*",
+        "irap/core-libs": "^1.1"
     },
     "autoload": {
         "psr-4": {

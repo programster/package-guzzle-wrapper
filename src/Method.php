@@ -2,9 +2,10 @@
 
 /*
  * An object to represent an HTTP request type. E.g. GET, PUT, POST, DELETE.
+ * This just helps prevent mistakes/typos. I don't have to worry about case sensitivity either.
  */
 
-
+declare(strict_types = 1);
 namespace Programster\GuzzleWrapper;
 
 
