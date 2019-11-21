@@ -23,7 +23,8 @@ final class Request
      * @param  string $url     - the url that you wish to send to. E.g. http://www.google.com?foo=bar
      * @param  array  $data    - the data that you wish to send. If the request is of type GET, then this
      *                           data will automatically get put into the url when we send the request.
-     * @param  array  $headers - any headers that should be sent with the requst. Useful for auth etc.
+     * @param  array  $headers - an associative array of headers that should be sent with the requst. Useful for auth etc.
+                                 This should be in name/value pair format, rather than a list of header strings.
      * @throws Exception
      */
     public function __construct(
@@ -51,7 +52,14 @@ final class Request
      */
     public function send() : Response
     {
-        $client = new \GuzzleHttp\Client();
+        if (count($this->headers) > 0)
+        {
+            $client = new \GuzzleHttp\Client(['headers' => $this->headers]);
+        }
+        else
+        {
+            $client = new \GuzzleHttp\Client();
+        }
         
         switch ((string) $this->method)
         {
